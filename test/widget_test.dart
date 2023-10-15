@@ -27,4 +27,27 @@ void main() {
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
   });
+
+  //test for doctor form age field
+  testWidgets(
+    'When user enters invalid age, the failure message is shown.',
+    (tester) async {
+      await tester.pumpWidget(const MyApp());
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byKey(const Key('doctor-form-age-field')), 'apple');
+      await tester.pumpAndSettle();
+      expect(find.text('Invalid age'), findsOneWidget);
+    },
+  );
+
+  testWidgets(
+    'When user enters valid age, the failure message is shown.',
+    (tester) async {
+      await tester.pumpWidget(const MyApp());
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byKey(const Key('doctor-form-age-field')), '1');
+      await tester.pumpAndSettle();
+      expect(find.text(''), findsOneWidget);
+    },
+  );
 }

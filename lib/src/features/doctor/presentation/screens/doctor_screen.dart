@@ -77,6 +77,7 @@ class DoctorHomeScreen extends StatelessWidget {
                   validator: AppValidator.fullName,
                 ).paddingOnly(bottom: 16),
                 AppTextField(
+                  key: const Key("doctor-form-age-field"),
                   controller: _patientAgeController,
                   inputfieldLimit: 3,
                   hintText: "Patient Age",
