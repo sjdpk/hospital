@@ -36,6 +36,13 @@
         OR 
    simply press F5 key if you are using VSCode
    ```
+   
+5. Run the app in Web :
+
+   ```bash
+   flutter run -d web 
+        OR 
+   Simply select 'web' from the device selection section at the bottom right, and press the F5 key if you are using VSCode.
 
 
 ### Build Docs ⛑️
