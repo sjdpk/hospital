@@ -3,22 +3,13 @@ part of 'doctor_bloc.dart';
 
 // Define an abstract class 'SubmitFormState' to represent the various states of the Form handling process.
 abstract class DoctorFormState extends Equatable {
-  final String? patientName;
-  final int? patientAge;
-  final String? patientAddress;
-  final String? patientLabTest;
+  final PatientRecordEntity? patientRecordEntity;
   const DoctorFormState({
-    this.patientName,
-    this.patientAge,
-    this.patientAddress,
-    this.patientLabTest,
+    this.patientRecordEntity,
   });
   @override
   List<Object?> get props => [
-        patientName,
-        patientAge,
-        patientAddress,
-        patientLabTest,
+        patientRecordEntity
       ];
 }
 
@@ -32,13 +23,10 @@ class DoctorFormSubmittingState extends DoctorFormState {
 }
 
 class DoctorFormSucessState extends DoctorFormState {
-  const DoctorFormSucessState({super.patientName, super.patientAddress, super.patientAge, super.patientLabTest});
+  const DoctorFormSucessState({super.patientRecordEntity});
   @override
   List<Object?> get props => [
-        patientName,
-        patientAge,
-        patientAddress,
-        patientLabTest,
+        patientRecordEntity
       ];
 }
 

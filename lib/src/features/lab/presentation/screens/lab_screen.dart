@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hospital/src/config/router/routes.dart';
@@ -11,6 +9,8 @@ import 'package:hospital/src/core/widgets/snackbar.dart';
 import 'package:hospital/src/core/widgets/textform.dart';
 import 'package:hospital/src/features/lab/presentation/bloc/lab_bloc.dart';
 
+import '../../domain/entity/lab_result_entity.dart';
+
 class LabHomeScreen extends StatelessWidget {
   LabHomeScreen({super.key});
   final _formKey = GlobalKey<FormState>();
@@ -21,14 +21,12 @@ class LabHomeScreen extends StatelessWidget {
 
   void submitForm(BuildContext context) {
     if (_formKey.currentState!.validate()) {
-      log("Message");
-      context.read<LabFormBloc>().add(
-            LabFormSumbitDataEvent(
-              labTestName: _labTestNameController.text,
-              testResult: _testResultController.text,
-              referenceRange: _referenceRangeController.text,
-            ),
-          );
+      LabTestRecordEntity labTestRecordEntity = LabTestRecordEntity(
+        labTestName: _labTestNameController.text,
+        testResult: _testResultController.text,
+        referenceRange: _referenceRangeController.text,
+      );
+      context.read<LabFormBloc>().add(LabFormSumbitDataEvent(labTestRecordEntity: labTestRecordEntity));
     }
   }
 

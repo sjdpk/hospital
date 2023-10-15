@@ -7,15 +7,12 @@ class SubmitFormEvent extends Equatable {
 }
 
 class LabFormSumbitDataEvent extends SubmitFormEvent {
-  final String? labTestName;
-  final String? testResult;
-  final String? referenceRange;
-  const LabFormSumbitDataEvent({this.labTestName, this.testResult, this.referenceRange});
+  final LabTestRecordEntity? labTestRecordEntity;
+
+  const LabFormSumbitDataEvent({this.labTestRecordEntity});
 
   @override
   List<Object?> get props => [
-        labTestName,
-        testResult,
-        referenceRange,
+        labTestRecordEntity
       ];
 }

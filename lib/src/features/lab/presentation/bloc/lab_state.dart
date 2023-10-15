@@ -3,15 +3,11 @@ part of 'lab_bloc.dart';
 
 // Define an abstract class 'SubmitFormState' to represent the various states of the Form handling process.
 abstract class LabFormState extends Equatable {
-  final String? labTestName;
-  final String? testResult;
-  final String? referenceRange;
-  const LabFormState({this.labTestName, this.testResult, this.referenceRange});
+  final LabTestRecordEntity? labTestRecordEntity;
+  const LabFormState({this.labTestRecordEntity});
   @override
   List<Object?> get props => [
-        labTestName,
-        testResult,
-        referenceRange,
+        labTestRecordEntity
       ];
 }
 
@@ -25,12 +21,10 @@ class LabFormSubmittingState extends LabFormState {
 }
 
 class LabFormSucessState extends LabFormState {
-  const LabFormSucessState({super.labTestName, super.testResult, super.referenceRange});
+  const LabFormSucessState({super.labTestRecordEntity});
   @override
   List<Object?> get props => [
-        labTestName,
-        testResult,
-        referenceRange,
+        labTestRecordEntity
       ];
 }
 

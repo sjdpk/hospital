@@ -7,17 +7,12 @@ class DoctorFormEvent extends Equatable {
 }
 
 class DoctorFormSumbitDataEvent extends DoctorFormEvent {
-  final String? patientName;
-  final int? patientAge;
-  final String? patientAddress;
-  final String? patientLabTest;
-  const DoctorFormSumbitDataEvent({this.patientName, this.patientAge, this.patientAddress, this.patientLabTest});
+  final PatientRecordEntity? patientRecordEntity;
+
+  const DoctorFormSumbitDataEvent({this.patientRecordEntity});
 
   @override
   List<Object?> get props => [
-        patientName,
-        patientAge,
-        patientAddress,
-        patientLabTest,
+        patientRecordEntity
       ];
 }

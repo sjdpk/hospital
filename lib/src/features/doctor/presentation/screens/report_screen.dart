@@ -65,10 +65,10 @@ class ReportScreen extends StatelessWidget {
                       rows: <DataRow>[
                         DataRow(
                           cells: <DataCell>[
-                            DataCell(Text(state.patientName ?? "")),
-                            DataCell(Text("${state.patientAge ?? ""}")),
-                            DataCell(Text(state.patientAddress ?? "")),
-                            DataCell(Text(DateTime.now().toString().split(' ')[0])),
+                            DataCell(Text(state.patientRecordEntity?.name ?? "")),
+                            DataCell(Text("${state.patientRecordEntity?.age ?? ""}")),
+                            DataCell(Text(state.patientRecordEntity?.address ?? "")),
+                            DataCell(Text(state.patientRecordEntity!.labOrderDate.toString().split(' ')[0])),
                           ],
                         ),
                         // Add more DataRow widgets for additional test results if needed
@@ -82,22 +82,22 @@ class ReportScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        'Patient’s name: ${state.patientName ?? ""}',
+                        'Patient’s name: ${state.patientRecordEntity?.name ?? ""}',
                         style: const TextStyle(fontSize: 18),
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        'Patient’s age: ${state.patientAge ?? ""} years',
+                        'Patient’s age: ${state.patientRecordEntity?.age ?? ""} years',
                         style: const TextStyle(fontSize: 18),
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        'Patient’s address: ${state.patientAddress ?? ""}',
+                        'Patient’s address: ${state.patientRecordEntity?.address ?? ""}',
                         style: const TextStyle(fontSize: 18),
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        'Lab result date: ${DateTime.now().toString().split(' ')[0]}',
+                        'Lab result date: ${state.patientRecordEntity!.labOrderDate.toString().split(' ')[0]}',
                         style: const TextStyle(fontSize: 18),
                       ),
                     ],

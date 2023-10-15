@@ -9,6 +9,8 @@ import 'package:hospital/src/core/widgets/snackbar.dart';
 import 'package:hospital/src/core/widgets/textform.dart';
 import 'package:hospital/src/features/doctor/presentation/bloc/doctor_bloc.dart';
 
+import '../../domain/entity/patient_record_entity.dart';
+
 class DoctorHomeScreen extends StatelessWidget {
   DoctorHomeScreen({super.key});
   final _formKey = GlobalKey<FormState>();
@@ -19,13 +21,16 @@ class DoctorHomeScreen extends StatelessWidget {
 
   void submitForm(BuildContext context) {
     if (_formKey.currentState!.validate()) {
+      final PatientRecordEntity patientRecordEntity = PatientRecordEntity(
+        name: _patientNameController.text,
+        age: int.parse(_patientAgeController.text),
+        address: _patientAddressController.text,
+        laboratoryTest: _patientLabTestController.text,
+        labOrderDate: DateTime.now(),
+      );
+
       context.read<DoctorFormBloc>().add(
-            DoctorFormSumbitDataEvent(
-              patientName: _patientNameController.text,
-              patientAge: int.parse(_patientAgeController.text),
-              patientAddress: _patientAddressController.text,
-              patientLabTest: _patientLabTestController.text,
-            ),
+            DoctorFormSumbitDataEvent(patientRecordEntity: patientRecordEntity),
           );
     }
   }

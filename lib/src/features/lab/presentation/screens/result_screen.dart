@@ -71,24 +71,23 @@ class ReportResultScreen extends StatelessWidget {
                               rows: <DataRow>[
                                 DataRow(
                                   cells: <DataCell>[
-                                    DataCell(Text(state.labTestName ?? "")),
-                                    DataCell(Text(state.labTestName ?? "")),
-                                    DataCell(Text(state.referenceRange ?? "")),
+                                    DataCell(Text(state.labTestRecordEntity?.labTestName ?? "")),
+                                    DataCell(Text(state.labTestRecordEntity?.testResult ?? "")),
+                                    DataCell(Text(state.labTestRecordEntity?.referenceRange ?? "")),
                                   ],
                                 ),
                                 // Add more DataRow widgets for additional test results if needed
                               ],
                             ),
                           );
-                       
                         } else {
                           // On smaller screens, display the content in a column
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              LabWidgets.resultInfo(name: "Lab test name", data: state.labTestName ?? ""),
-                              LabWidgets.resultInfo(name: "Test result", data: state.labTestName ?? ""),
-                              LabWidgets.resultInfo(name: "Reference range", data: state.referenceRange ?? ""),
+                              LabWidgets.resultInfo(name: "Lab test name", data: state.labTestRecordEntity?.labTestName ?? ""),
+                              LabWidgets.resultInfo(name: "Test result", data: state.labTestRecordEntity?.testResult ?? ""),
+                              LabWidgets.resultInfo(name: "Reference range", data: state.labTestRecordEntity?.referenceRange ?? ""),
                             ],
                           );
                         }
