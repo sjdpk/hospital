@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hospital/src/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:hospital/src/features/doctor/presentation/screens/screens.dart';
+import 'package:hospital/src/features/lab/presentation/screens/screens.dart';
 
 class AppRoutes {
   static const String homeRoute = "/";
@@ -17,6 +18,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => DoctorHomeScreen());
       case AppRoutes.reportRoute:
         return MaterialPageRoute(builder: (_) => const ReportScreen());
+      case AppRoutes.labRoute:
+        return MaterialPageRoute(builder: (_) => LabHomeScreen());
+      case AppRoutes.resultRoute:
+        return MaterialPageRoute(builder: (_) => const ReportResultScreen());
       default:
         return MaterialPageRoute(builder: (_) => const DashboardScreen());
     }
